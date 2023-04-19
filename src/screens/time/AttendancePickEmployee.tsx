@@ -189,7 +189,7 @@ class AttendancePickEmployee extends React.Component<
                     </TouchableOpacity>
                   );
                 }}
-                keyExtractor={(item) => item.empNumber}
+                keyExtractor={(item) => item.empNumber.toString()}
                 keyboardShouldPersistTaps="handled"
                 refreshControl={
                   <RefreshControl

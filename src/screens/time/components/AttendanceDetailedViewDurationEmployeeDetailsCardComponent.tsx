@@ -105,7 +105,7 @@ class AttendanceDetailedViewDurationEmployeeDetailsCardComponent extends React.C
               {this.props.date}
             </FormattedDate>
           ) : null}
-          {this.props.workweekResult !== '-1' &&
+          {this.props.workweekResult !== -1 &&
           this.props.workweekResult !== WORK_WEEK_FULL ? (
             <>
               <View>
@@ -145,7 +145,7 @@ class AttendanceDetailedViewDurationEmployeeDetailsCardComponent extends React.C
                   },
                 ]}>
                 <Text style={{color: theme.typography.darkColor}}>
-                  {holiday.description}
+                  {holiday.name}
                   {' - '}
                   {holiday.length === WORK_WEEK_HALF ? 'Half Day' : null}
                   {holiday.length === WORK_WEEK_FULL ? 'Full Day' : null}
@@ -160,9 +160,7 @@ class AttendanceDetailedViewDurationEmployeeDetailsCardComponent extends React.C
                 style={[
                   styles.alignSelfFlexStart,
                   {
-                    backgroundColor: getLeaveColourById(
-                      leave.leaveType.id.toString(),
-                    ),
+                    backgroundColor: getLeaveColourById(leave.leaveType.id),
                     paddingHorizontal: theme.spacing * 3,
                     paddingVertical: theme.spacing,
                     marginBottom: theme.spacing,
@@ -233,7 +231,7 @@ interface AttendanceDetailedViewDurationEmployeeDetailsCardComponentProps
   date: string;
   holidays: Holiday[];
   leaves: LeaveObject[];
-  workweekResult?: string;
+  workweekResult?: number;
   employeeName?: string;
   mode: Mode;
 }
